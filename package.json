@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
-    "bootstrap": "^3.3.7",
     "nprogress": "^0.2.0",
     "vue": "^2.1.0",
     "vue-axios": "^1.2.2",

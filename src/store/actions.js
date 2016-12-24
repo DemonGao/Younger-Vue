@@ -4,21 +4,10 @@
 import * as types from './mutation-types'
 
 export default {
-  addTotalTime({ commit }, time) {
-    commit(types.ADD_TOTAL_TIME, time)
+  updateMap({ commit }, map) {
+    commit(types.UPDATE_MAP, map);
   },
-  decTotalTime({ commit }, time) {
-    commit(types.DEC_TOTAL_TIME, time)
-  },
-  savePlan({ commit }, plan) {
-    commit(types.SAVE_PLAN, plan);
-  },
-  deletePlan({ commit }, plan) {
-    commit(types.DELETE_PLAN, plan)
-  },
-
-
-  updateMap({ commit }, plan) {
-    commit(types.UPDATE_MAP, plan);
+  updatePoint({ commit }, point) {
+    commit(types.UPDATE_POINT, point);
   },
 };

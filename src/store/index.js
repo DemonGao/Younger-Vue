@@ -10,9 +10,11 @@ Vue.use(Vuex);
 
 const state = {
 	serverurl:'http://123.206.64.165:8000/',
-  	totalTime: 0,
-  	map:null,
-  	list: []
+  	map:{},
+  	point:{
+  		lng:116.404,
+  		lat:39.915
+  	},
 };
 
 export default new Vuex.Store({
