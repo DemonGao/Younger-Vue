@@ -69,7 +69,6 @@
 						lat:pp.lat,
 						lng:pp.lng
 					}
-					console.log(point)
 					_self.$store.dispatch('updatePoint',point)
 				}
 				var local = new BMap.LocalSearch("map", { //智能搜索

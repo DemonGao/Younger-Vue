@@ -12,9 +12,9 @@ const state = {
 	serverurl:'http://123.206.64.165:8000/',
   	map:{},
   	point:{
-  		lng:116.404,
-  		lat:39.915
-  	},
+  		lng:116.404, //纬度
+  	  lat:39.915119    //经度
+    },
 };
 
 export default new Vuex.Store({
