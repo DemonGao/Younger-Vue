@@ -23,5 +23,6 @@ export default{
 <style scoped>
   .wrap{
     margin-top: 70px;
+    position: relative;
   }
 </style>

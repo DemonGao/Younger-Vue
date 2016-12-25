@@ -2,8 +2,9 @@
 	<div class="baidumap">
 		<div id="allmap" v-bind:style="mapStyle"></div>
 		<map-search></map-search>
-		lng:{{this.$store.state.point.lng}},lat:{{this.$store.state.point.lat}}<br/>
-		lng:{{point.lng}},lat:{{point.lat}}
+	<!-- 	lng:{{this.$store.state.point.lng}},lat:{{this.$store.state.point.lat}}<br/>
+		lng:{{point.lng}},lat:{{point.lat}} -->
+		<router-link id="open" class="more" :to="{name:'houselist',params:{id:id}}" tag="span">查看更多</router-link>
 	</div>	
 </template>
 <script type="text/javascript">
@@ -18,6 +19,7 @@
 					width:'100%',
 					height:this.mapHeight +'px'
 				},
+				id:0
 			}
 		},
 		computed: {
@@ -58,24 +60,28 @@
   					}
   				}).then((response) => {
   					// console.log(response.data)
-  					MapUtils.createMarker(map,response.data);
+  					MapUtils.createMarker(map,response.data,_self);
+
+  					
 				})
 			})
 		},
 	}
 	var MapUtils =(function(){
+		/*
+			创建标注,并设置信息窗口
+			map:地图
+			data:坐标数据
+			_self: vue 用来设置信息窗口 id
+		*/
+		function createMarker(map,data,_self){
 		
-		function createMarker(map,data){
-			
-			// console.log(map);
-			// console.log(typeof(data))
 
 			data.forEach(function(value){
 				console.log(value);
+				_self.id = value.id;
 				var sContent =
-				"<h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+value.city+'市' + value.zone+'区' +value.street+'街道' + value.comm+"小区</h4>"+
-				"<button >进入小区"+value.id+"</button>";
-
+				"<h4 style='margin:0 0 5px 0;padding:0.2em 0'>"+value.city+'市' + value.zone+'区' +value.street+'街道' + value.comm+"小区</h4><button id='seeDetalis'>查看小区租房详情</button>";
 				var point = new BMap.Point(value.lng,value.lat);
   				var marker = new BMap.Marker(point);
 
@@ -83,10 +89,12 @@
   				map.addOverlay(marker);
   				marker.addEventListener("click", function(){          
 				   this.openInfoWindow(infoWindow);
-				   //图片加载完毕重绘infowindow
-				   document.getElementById('imgDemo').onload = function (){
-					   infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
-				   }
+				   var seeDetalis = document.getElementById("seeDetalis");
+  					seeDetalis.addEventListener("click", function(){
+  						//模拟点击事件 进行路由跳转
+  						console.log(document.getElementById("open"));
+  						document.getElementById("open").click();
+  					});
 				});
 			})
 			// return value

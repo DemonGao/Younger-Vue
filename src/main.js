@@ -11,14 +11,19 @@ import 'nprogress/nprogress.css'
 /*模板组件*/
 import App from './App'
 import Home from './components/Home.vue'
-
+import HouseList from './components/map/HouseList'
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
 const routes =[
 	{
 		path:'/',
 		component:Home
-	}
+	},
+  {
+    path:'/houselist/:id',
+    name:'houselist',
+    component:HouseList
+  }
 ]
 const router = new VueRouter({
 	mode:'history',

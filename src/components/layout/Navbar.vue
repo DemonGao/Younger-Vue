@@ -3,9 +3,9 @@
 		<nav>
 			<ul class="clearfix">
 				<li>首页</li>
-				<li class="right">
+				<!-- <li class="right">
 					<input type="search"  placeholder="请输入地址" />
-				</li>
+				</li> -->
 			</ul>
 		</nav>
 	</header>
@@ -24,6 +24,8 @@
 		width:100%;
 		height: 70px;
 		z-index: 9999;
+		background-color: #eee;
+		opacity: .8
 	}
 	#header nav{
 		position: relative;

@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+  	
   	<baidu-map :mapHeight = "500"></baidu-map>
   </div>
 </template>
