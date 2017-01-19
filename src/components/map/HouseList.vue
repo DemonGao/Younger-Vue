@@ -1,19 +1,26 @@
 <template>
 	<div class="houselist">
-		<h1>小区详情</h1>
+		<!-- <h1>小区详情</h1> -->
 		<ul class="house-list">
 			<li class="house-item clearfix" v-for="item in items">
-				<a :href="item.url">
+				<a href="javascript:;" @click="gotourl(item.url)">
 					<div class="house-conten-left">
-						<img src="../../../static/img/house1.jpg"/>
+						<img :src="item.pic_url"/>
 					</div>
 					<div class="house-conten-right">
 						<h2>{{item.title}}</h2>
-						<p class="house-item-rentway">{{item.rentway}}</p>
-						<p class="house-item-price">
-							{{item.price}}
-							<span v-if="item.price!='面议'">元</span>
-						</p>
+						<!-- <div class="house-item-tag tag">
+							<span>空调</span>
+							<span>洗衣机</span>
+						</div> -->
+						<div class="house-item-detalis clearfix">
+							<p class="house-item-rentway fl">{{item.rentway}}</p>
+							<p class="house-item-price fr">
+								{{item.price}}
+								<span v-if="item.price!='面议'">元</span>
+							</p>
+						</div>
+						
 					</div>
 				</a>
 			</li>
@@ -35,6 +42,12 @@
 		    	return this.$store.state.serverurl
 		    }
 		},
+		methods: {
+			gotourl(url){
+				
+				window.location.href = url;
+			}
+		},
 		mounted:function(){
 			var _self = this;
 			// http://123.206.64.165:8000/renthouse/data?commid=818&format=json
@@ -42,6 +55,7 @@
   				params:{
   					commid:this.id,
   					format:"json",
+  					page:1
   				}
   			}).then((response) => {
   				console.log(response.data)
@@ -61,6 +75,7 @@
 		list-style:none;
 	}
 	.house-list .house-item{
+		
 		box-sizing: border-box;
 		height: 100px;
 		padding: 10px; 
@@ -79,6 +94,7 @@
 		height: 100%;
 	}
 	.house-list .house-item .house-conten-right{
+		position: relative;
 		height: 100%;
 		margin-left: 110px;
 	}
@@ -88,15 +104,30 @@
 		font-size: 14px;
 		font-weight: bold;
 	}
-
-	.house-list .house-item-rentway{
+	.house-list .house-item-tag{
+		margin-top: 5px;
+	}
+	.tag span{
+		font-size: 12px;
+		background-color: #FFFCCA;
+		color: #000;
+		padding: 2px 10px;
+		border-radius: 5px;
+	}
+	.house-list .house-item-detalis{
+		position: absolute;
+		width: 100%;
+		bottom: 0;
+	}
+	.house-list .house-item-detalis .house-item-rentway{
 		font-size: 12px;
 		color: #999;
 	}
-	.house-list .house-item-price{
+	.house-list .house-item-detalis .house-item-price{
+		font-size: 12px;
 		color: orange;
 	}
-	.house-list .house-item-price span{
+	.house-list .house-item-detalis .house-item-price span{
 		font-size: 12px;
 	}
 </style>

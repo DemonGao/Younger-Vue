@@ -3,16 +3,35 @@
 		<nav>
 			<ul class="clearfix">
 				<li>首页</li>
-				<!-- <li class="right">
-					<input type="search"  placeholder="请输入地址" />
-				</li> -->
+				<li class="right">
+					<map-search :mapStyle="mapStyle"></map-search>
+				</li>
 			</ul>
 		</nav>
 	</header>
+	<!-- <mt-header title="Younger Home" :fixed="true">
+		<router-link to="/" slot="left">
+			<mt-button icon="back">返回</mt-button>
+		</router-link>
+		<mt-button icon="more" slot="right"></mt-button>
+	</mt-header> -->
 </template>
 
 <script>
-	
+	import MapSearch from './../map/MapSearch.vue'
+	export default{
+		components:{
+			'mapSearch': MapSearch
+		},
+		data(){
+			return {
+				mapStyle:{
+					'width':'180px',
+					'padding':'5px .5em'
+				}
+			}
+		}
+	}
 </script>
 
 <style scoped>
@@ -41,5 +60,13 @@
 	}
 	#header nav ul li.right{
 		float: right;
+	}
+	@media (max-width:768px){
+		#header nav{
+			width: 95%;
+		}
+		#header nav ul li{
+			margin:0 5px;
+		}
 	}
 </style>

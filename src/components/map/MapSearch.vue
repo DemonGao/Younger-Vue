@@ -2,7 +2,7 @@
 	<div class="mapsearch">
 		
 		<div id="r-result">
-			{{map}} <input type="text" :id="inputid" size="20" placeholder="请输入地址" style="width:150px;" />
+			<input type="text" :id="inputid" size="20" placeholder="请输入地址" :style="mapStyle" />
 		</div>
 		<div :id="resultPanelid" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
 	</div>
@@ -20,9 +20,12 @@
 				type:String,
 				default:"搜索栏"
 			},
-			map:{
+			mapStyle:{
 				//父组件map
 				type:Object,
+				// default:{
+				// 	width:'200px'
+				// }
 				// default:new BMap.Map("allmap")
 			}
 		},
@@ -55,11 +58,11 @@
 			});
 			var myValue;
 			ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
-			var _value = e.item.value;
-				myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+				document.getElementById(_self.inputid).blur();
+				var _value = e.item.value;
+					myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
 				document.getElementById(_self.resultPanelid).innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
 				setPlace();
-
 			});
 
 			function setPlace(){
@@ -80,9 +83,9 @@
 	}
 </script>
 <style type="text/css" scoped>
-	.mapsearch{
+	/*.mapsearch{
 		position: absolute;
 		top: 40px;
 		left: 40px;
-	}
+	}*/
 </style>

@@ -8,12 +8,17 @@ import store from './store'				//vuex
 
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+
+import MintUI from 'mint-ui';     //Element移动UI库
+import 'mint-ui/lib/style.css'
+
 /*模板组件*/
 import App from './App'
 import Home from './components/Home.vue'
 import HouseList from './components/map/HouseList'
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
+Vue.use(MintUI);
 const routes =[
 	{
 		path:'/',

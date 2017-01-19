@@ -8,3 +8,17 @@
 	font-size:0; /**//*字体大小为0；*/ 
 }
 .clearfix{ *zoom:1;} /**//*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/ 
+
+/*SVG图标*/
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
